@@ -5,9 +5,12 @@ from os import stat, remove
 # encryption/decryption buffer size - 64K
 bufferSize = 64 * 1024
 
+
+    
+
 def aes_encrypt():
     # Input file path for encryption
-    input_file = input(" Please Input file path for encryption:")
+    input_file = input(" Please Input file path for encryption: ")
     # Input password from key board
     password = input("Please input your password for AES encryption:")
     # output file will be input_file name + .aes
