@@ -22,7 +22,7 @@ def Encrypt():
         FilePath = input("Enter file path for encryption: ")
         # Open and raise error of file is not existed
         with open(FilePath, "rb") as File:
-            # Enter password to encript
+            # Enter password to encrypt
             pwd = getpass.getpass("Enter password: ")
             rePwd = getpass.getpass("Re-enter password: ")
 
@@ -30,7 +30,7 @@ def Encrypt():
             if (pwd != rePwd):
                 print("Password entered is not match")     
             else:
-                # Once acceptable ertification, encript file with password
+                # Once acceptable ertification, encrypt file with password
                 enFilePath = FilePath+".aes"
                 # Write file regardless the file is exist or not
                 with open(enFilePath, "wb") as deFile:
@@ -43,11 +43,11 @@ def Encrypt():
                 
 def Decrypt():
     try:
-        # Enter encripted file path for decryption
+        # Enter encrypted file path for decryption
         enFilePath = input("Enter file path for decryption: ")
         # Open and raise error of file is not existed
         with open(enFilePath, "rb") as enFile:
-            # Enter password of encripted file
+            # Enter password of encrypted file
             pwd = getpass.getpass("Enter password: ")
 
             try:
