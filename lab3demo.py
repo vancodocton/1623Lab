@@ -1,4 +1,4 @@
-import sys
+# import sys
 import pyAesCrypt
 import getpass
 from os import stat, remove
