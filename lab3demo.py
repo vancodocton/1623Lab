@@ -9,7 +9,7 @@ bufferSize = 64 * 1024
 # show menu interface
 def I_Menu():
     print(seperatingLine)
-    print("\tSimple File Encryptor")
+    print("\tSimple File Encryption ")
     print(seperatingLine)
     print("Option 1: Encrypt a file")
     print("Option 2: Decrypt a file")
