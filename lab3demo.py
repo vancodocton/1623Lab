@@ -18,55 +18,61 @@ def I_Menu():
 
 def Encrypt():
     try:
+        # Enter origin file path for encryption
         FilePath = input("Enter file path for encryption: ")
-
+        # Open and raise error of file is not existed
         with open(FilePath, "rb") as File:
-
+            # Enter password to encript
             pwd = getpass.getpass("Enter password: ")
             rePwd = getpass.getpass("Re-enter password: ")
 
-            # Validate password before encrypt
+            # Verify  password before encrypt
             if (pwd != rePwd):
                 print("Password entered is not match")     
             else:
-                # Encript file with password
+                # Once acceptable ertification, encript file with password
                 enFilePath = FilePath+".aes"
+                # Write file regardless the file is exist or not
                 with open(enFilePath, "wb") as deFile:
                     pyAesCrypt.encryptStream(File, deFile, pwd, bufferSize)
                     print("File is encrypted sucessfully")
                     print("file is: ", enFilePath) 
-    # Show error
+    # Show error 
     except Exception as error:        
         print(str(error))
                 
 def Decrypt():
     try:
+        # Enter encripted file path for decryption
         enFilePath = input("Enter file path for decryption: ")
-
+        # Open and raise error of file is not existed
         with open(enFilePath, "rb") as enFile:
-            deFilePath = enFilePath+".txt"
-
+            # Enter password of encripted file
             pwd = getpass.getpass("Enter password: ")
 
-            try:                    
+            try:
+                # Encrypt file with entered password                
+                deFilePath = enFilePath+".txt"
                 with open(deFilePath, "wb") as deFile:
                     enFileSize = stat(enFilePath).st_size
                     pyAesCrypt.decryptStream(enFile, deFile, pwd, bufferSize, enFileSize)
                     print("File is decrypted sucessfully")
-                    print("file is: ", deFilePath)  
+                    print("file is: ", deFilePath)
+            # Raise error if decription is failed
             except ValueError as error:
                 print(str(error))
                 remove(deFilePath)       
+    # Raise another errors
     except Exception as error:
         print(str(error))
 
+# Show invalid option message
 def I_InvalidOptionMessage():
     print("Invalid option! Please try again...")
 
 def main():
     while (True):
         # Show menu option
-
         I_Menu()
         # Choose and execute option
         try:
@@ -79,6 +85,6 @@ def main():
             func()
         except ValueError:
             I_InvalidOptionMessage()
-
+# Run the function main if directly run the script
 if __name__ == "__main__":
     main()
